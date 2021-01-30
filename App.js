@@ -6,11 +6,12 @@ import Login from "./src/modules/auth/Login/Login";
 import MobileScreen from "./src/modules/auth/MobileScreen/MobileScreen";
 import Register from "./src/modules/auth/Register/Register";
 import WelcomeScreen from "./src/modules/auth/WelcomeScreen/WelcomeScreen";
+import Navigator from './src/routes/drawer';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Login />
+      <Navigator/>
     </View>
   );
 }

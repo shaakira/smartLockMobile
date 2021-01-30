@@ -70,34 +70,10 @@ const styles= StyleSheet.create({
         padding:20,
         marginTop:20
       },
-      header:{
-        fontSize: 20,
-        color: colors.font.darkText,
-        fontWeight:'600',
-        textAlign:'center'
-      },
-      markStyle:{
-        height:40,
-        width:40,
-        alignSelf:'center',
-        marginTop:60
-      },
-      contentText:{
-        fontSize: 16,
-        
-        marginTop:10,
-        textAlign: 'auto'
-      },
-      questStyle:{
-        height:30,
-        width:30,
-        margin:20,
-        alignSelf:'flex-end'
-      },
       buttonStyle:{
         backgroundColor:'#01394a',
         borderRadius:50,
-        width:300,
+        width:200,
         height:60,
         alignSelf:'center',
         margin:30,
@@ -106,19 +82,21 @@ const styles= StyleSheet.create({
       btnContainer:{
         marginTop:20
       },
-      btnStyle:{
-        backgroundColor:'#e85f5f',
-        marginTop:50,
-        borderRadius:8,
-        width:200,
-        height:50,
-        alignSelf:'center',
-        margin:30,
+              btmBtn:{
+                borderRadius:50,
+                width:150,
+                height:60,
+                alignSelf:'center',
+                marginTop:60,
+                marginLeft:20,
+                borderColor:color.veryLightPink,
+                borderWidth:1,
+                backgroundColor:'white'
+                
               },
-              pwdText:{
-color:'#e6c405',marginLeft:10,
-marginTop:-8
-              }
+              btnText:{
+                color: colors.font.lightText,
+              },
 
 }
 )

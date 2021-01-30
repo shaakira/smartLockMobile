@@ -6,7 +6,7 @@ import colors from '../../../styles/color';
 const styles= StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'white'
+    backgroundColor:'#01394a'
   },
   innerContainer:{
     flexDirection: 'row',
@@ -14,8 +14,10 @@ const styles= StyleSheet.create({
       bottomContainer:{
         flex:5,
         backgroundColor:'white',
-        borderTopRightRadius:10,
-        borderTopLeftRadius:10,
+        borderTopRightRadius:20,
+        borderTopLeftRadius:20,
+        marginTop:20
+
     },
     
     logoImage: {
@@ -30,17 +32,18 @@ const styles= StyleSheet.create({
       topText:{
         marginTop:'10%',
         fontSize:32,
-        color:'black',
+        color:'white',
         fontWeight:'500',
         marginLeft:'5%',
         justifyContent:'center',
     } ,
     
     imageStyle:{
-      width: 15,
-      height: 15, 
+      width: 20,
+      height: 20, 
       marginLeft:'20%',
-      marginTop:'65%'
+      marginTop:'65%',
+      tintColor:'white'
   },
     keyboardAwareContentContainer: {
         flex: 1,
@@ -58,8 +61,9 @@ const styles= StyleSheet.create({
       {
         margin:10,
         fontSize: 14,
-        color: colors.font.lightText,
-        fontWeight:'600'
+     color:'#e6c405',
+        fontWeight:'600',
+        marginBottom:30
       },
       modal:{
         height:400,
@@ -118,6 +122,43 @@ const styles= StyleSheet.create({
               pwdText:{
 color:'#e6c405',marginLeft:10,
 marginTop:-8
+              },
+              cardStyle:{
+                flexDirection:'row',
+                margin:20
+              },
+              iconStyle:{
+                width: 20,
+                height: 20, 
+                tintColor:colors.font.lightText,
+              },
+              cardText:
+              {
+                fontSize: 16,
+                fontWeight:'500',
+                marginStart:20,
+                color: colors.font.lightText,
+              },
+              border:{
+                height:1,
+                backgroundColor:'#f0f0f0'
+              },
+              iconRight:{
+                width: 20,
+                height: 20, 
+                tintColor:colors.font.lightText,
+               marginLeft:140
+              },iconRight2:{
+                width: 20,
+                height: 20, 
+                tintColor:colors.font.lightText,
+               marginLeft:98
+              },
+              iconRight3:{
+                width: 20,
+                height: 20, 
+                tintColor:colors.font.lightText,
+               marginLeft:52
               }
 
 }

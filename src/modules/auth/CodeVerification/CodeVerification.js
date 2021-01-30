@@ -12,21 +12,23 @@ import CodeInputField from '../../../components/CodeInput/CodeInputField';
 
 
 
-const CodeVerification = () => {
-  const handleOnFulfill = (code: string): void => {
+class CodeVerification extends React.Component{
+ navigation=this.props.navigation
+  handleOnFulfill = (code) => {
 
   };
+  render(){
 
   return (
     <View style={styles.container}>
 
       <View style={styles.innerContainer}>
-        <TouchableOpacity >
+        <TouchableOpacity onPress={()=> this.navigation.goBack()}>
           <Image source={arrow} style={styles.imageStyle} />
         </TouchableOpacity>
       </View>
       <Text style={styles.topText}>OTP Verification</Text>
-      <Text style={styles.headerTxt}>Check your SMS messages.We've sent you the PIN at 0776068444</Text>
+      <Text style={styles.headerTxt}>Check your SMS messages.We've sent you the PIN at {this.navigation.getParam('phoneNumber')}</Text>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={styles.bottomContainer} >
@@ -36,7 +38,7 @@ const CodeVerification = () => {
           <View style={styles.textInput}>
             <Text style={styles.label}>VERIFICATION CODE</Text>
             <CodeInputField
-              handleOnFulfill={handleOnFulfill} />
+              handleOnFulfill={this.handleOnFulfill} />
           </View>
 
 
@@ -60,7 +62,7 @@ const CodeVerification = () => {
       </KeyboardAvoidingView>
 
     </View>
-  );
+  );}
 
 };
 

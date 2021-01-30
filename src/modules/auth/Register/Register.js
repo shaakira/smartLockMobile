@@ -23,14 +23,9 @@ class Register extends React.Component {
     email: "",
     password: "",
   };
+  navigation = this.props.navigation;
 
-  handleChange = (text) => {
-    return (name) => {
-      const user = { ...this.state.user };
-      user[name] = text;
-      this.setState({ user });
-    };
-  };
+
   handleSubmit = async () => {
     const user = {
       firstName: this.state.firstName,
@@ -40,7 +35,7 @@ class Register extends React.Component {
     };
     console.log(user);
     await axios
-    .post("http://192.168.1.103:5000/user/signup", user)
+    .post("http://172.20.10.2:5000/user/signup", user)
     .then((response) => {
       if (response.status === 200) {
         console.log('success');
@@ -55,7 +50,7 @@ class Register extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.innerContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity  onPress={() => this.navigation.goBack()}>
             <Image source={arrow} style={styles.imageStyle} />
           </TouchableOpacity>
         </View>
