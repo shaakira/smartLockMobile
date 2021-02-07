@@ -15,6 +15,7 @@ import {
 import styles from "./Register.styles";
 import TextField from "../../../components/TextField/TextField";
 import { Button } from "react-native-elements";
+import color from "../../../styles/color";
 
 class Register extends React.Component {
   state = {
@@ -22,9 +23,10 @@ class Register extends React.Component {
     lastName: "",
     email: "",
     password: "",
+    isEmailError: false,
+    isPasswordError: false,
   };
   navigation = this.props.navigation;
-
 
   handleSubmit = async () => {
     const user = {
@@ -33,24 +35,35 @@ class Register extends React.Component {
       email: this.state.email,
       password: this.state.password,
     };
-    console.log(user);
+    let url=Expo.Constants.manifest.extra.myApiKey;
     await axios
-    .post("http://172.20.10.2:5000/user/signup", user)
-    .then((response) => {
-      if (response.status === 200) {
-        console.log('success');
-    
+      .post(`${url}/user/signup`, user)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("success");
+          this.navigation.navigate("Home");
+          localStorage.setItem("user",JSON.stringify(response.data))
 
-      }
-    }).catch((error)=>{
-      console.log(error)
-    })
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   render() {
+    const disabled =
+      this.state.firstName === "" ||
+      this.state.lastName === "" ||
+      this.state.email === "" ||
+      this.state.password === "" ||
+      this.state.isEmailError === true ||
+      this.state.isPasswordError === true;
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
     return (
       <View style={styles.container}>
         <View style={styles.innerContainer}>
-          <TouchableOpacity  onPress={() => this.navigation.goBack()}>
+          <TouchableOpacity onPress={() => this.navigation.goBack()}>
             <Image source={arrow} style={styles.imageStyle} />
           </TouchableOpacity>
         </View>
@@ -93,7 +106,21 @@ class Register extends React.Component {
               <TextField
                 value={this.state.email}
                 name="email"
-                onChangeText={(value) => this.setState({ email: value })}
+                onChangeText={(value) => {
+                  if (reg.test(value) === false) {
+                    this.setState({ email: value, isEmailError: true });
+                  } else {
+                    this.setState({ email: value, isEmailError: false });
+                  }
+                }}
+                errorMessage={
+                  this.state.isEmailError === true ? "Invalid Email" : ""
+                }
+                inputContainerStyle={{
+                  borderBottomColor:
+                    this.state.isEmailError === true ? "red" : color.brownGrey,
+                }}
+                isError={this.state.isEmailError}
               />
             </View>
             <View style={styles.textInput}>
@@ -102,16 +129,37 @@ class Register extends React.Component {
                 secureTextEntry
                 value={this.state.password}
                 name="password"
-                onChangeText={(value) => this.setState({ password: value })}
+                onChangeText={(value) => {
+                  if (value.length < 6) {
+                    this.setState({ password: value, isPasswordError: true });
+                  } else {
+                    this.setState({ password: value, isPasswordError: false });
+                  }
+                }}
+                errorMessage={
+                  this.state.isPasswordError === true && this.state.password !== ""
+                    ? "Your password must be 6 or more characters long"
+                    : ""
+                }
+                inputContainerStyle={{
+                  borderBottomColor:
+                    this.state.isPasswordError === true && this.state.password !== ""
+                      ? "red"
+                      : color.brownGrey,
+                }}
+                isError={this.state.isPasswordError}
               />
               <Text style={styles.pwdText}>
-                Your password must be 6 or more characters long
+                {this.state.password === ""
+                  ? "Your password must be 6 or more characters long"
+                  : ""}
               </Text>
             </View>
             <Button
               title="CREATE AN ACCOUNT"
               buttonStyle={styles.buttonStyle}
               onPress={this.handleSubmit}
+              disabled={disabled}
             />
           </ScrollView>
         </KeyboardAvoidingView>

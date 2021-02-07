@@ -6,7 +6,7 @@ import colors from '../../../styles/color';
 const styles= StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'white'
+    backgroundColor:'#01394a'
   },
   innerContainer:{
     flexDirection: 'row',
@@ -14,8 +14,9 @@ const styles= StyleSheet.create({
       bottomContainer:{
         flex:5,
         backgroundColor:'white',
-        borderTopRightRadius:10,
-        borderTopLeftRadius:10,
+        borderTopRightRadius:20,
+        borderTopLeftRadius:20,
+        marginTop:20
     },
     
     logoImage: {
@@ -30,7 +31,7 @@ const styles= StyleSheet.create({
       topText:{
         marginTop:'10%',
         fontSize:32,
-        color:'black',
+        color:'white',
         fontWeight:'500',
         marginLeft:'5%',
         justifyContent:'center',
@@ -40,27 +41,20 @@ const styles= StyleSheet.create({
       width: 20,
       height: 20, 
       marginLeft:'20%',
-      marginTop:'65%'
+      marginTop:'65%',
+      tintColor:'white'
   },
     keyboardAwareContentContainer: {
         flex: 1,
       },    
-      textInput:{
-          marginRight:20,
-          marginLeft:20,
-          
-      } ,
-      textStyle:{
-        flex:1,
-        marginTop:30
-      },
-      text:
-      {
-        margin:10,
-        fontSize: 14,
-        color: colors.font.lightText,
-        fontWeight:'600'
-      },
+
+    text:
+    {
+      margin:10,
+      fontSize: 14,
+      color: colors.font.lightText,
+      fontWeight:'600'
+    },
       modal:{
         height:400,
         backgroundColor:'white',
@@ -95,16 +89,17 @@ const styles= StyleSheet.create({
         alignSelf:'flex-end'
       },
       buttonStyle:{
-        backgroundColor:'#01394a',
-        borderRadius:50,
-        width:300,
-        height:60,
-        alignSelf:'center',
-        margin:30,
-        marginTop:60
-       },
+        backgroundColor:'#e6c405',
+            borderRadius:50,
+            width:200,
+            height:60,
+            alignSelf:'flex-end',
+          marginLeft:30
+    },
       btnContainer:{
-        marginTop:20
+        flexDirection:'row',
+        marginTop:20,
+        marginLeft:30
       },
       btnStyle:{
         backgroundColor:'#e85f5f',
@@ -115,9 +110,47 @@ const styles= StyleSheet.create({
         alignSelf:'center',
         margin:30,
               },
+              cancelBtn:{
+                color: colors.font.lightText,
+                fontSize: 20,
+                marginTop:15
+            
+            },
               pwdText:{
 color:'#e6c405',marginLeft:10,
 marginTop:-8
+              },
+              centeredView: {
+                flex:1,
+                justifyContent: "center",
+                alignItems: "center",
+              },
+              modalView: {
+                backgroundColor: "white",
+                borderRadius: 20,
+              padding:30,
+              margin:20
+              },
+              openButton: {
+                backgroundColor: "#F194FF",
+                borderRadius: 20,
+                padding: 10,
+                elevation: 2
+              },
+              modalText: {
+                marginBottom: 15,
+                fontSize:26,
+                color:'#01394a',
+                fontWeight:'500'
+              
+              },modalContainer:{
+                flex:3
+              },
+              modalInnerText:{
+                marginBottom: 15,
+                fontSize:16,
+                marginTop:15,
+                color:color.brownishGrey
               }
 
 }

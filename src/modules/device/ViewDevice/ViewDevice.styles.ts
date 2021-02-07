@@ -1,28 +1,20 @@
 import { StyleSheet} from 'react-native';
 import color from '../../../styles/color';
-import colors from '../../../styles/color';
 
 
 const styles= StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#01394a'
-
-  
+    backgroundColor:'white'
   },
   innerContainer:{
     flexDirection: 'row',
-    justifyContent:'space-between'
-
   },
       bottomContainer:{
         flex:5,
         backgroundColor:'white',
-        borderTopRightRadius:20,
-        borderTopLeftRadius:20,
-        paddingTop:30,
-        marginTop:20
-
+        borderTopRightRadius:10,
+        borderTopLeftRadius:10,
     },
     
     logoImage: {
@@ -37,18 +29,17 @@ const styles= StyleSheet.create({
       topText:{
         marginTop:'10%',
         fontSize:32,
-        color:'white',
+        color:'black',
         fontWeight:'500',
         marginLeft:'5%',
         justifyContent:'center',
     } ,
     
     imageStyle:{
-      width: 20,
-      height: 20, 
+      width: 15,
+      height: 15, 
       marginLeft:'20%',
-      marginTop:'65%',
-      tintColor:'white'
+      marginTop:'65%'
   },
     keyboardAwareContentContainer: {
         flex: 1,
@@ -66,7 +57,7 @@ const styles= StyleSheet.create({
       {
         margin:10,
         fontSize: 14,
-        color: colors.font.lightText,
+        color: color.font.lightText,
         fontWeight:'600'
       },
       modal:{
@@ -78,41 +69,18 @@ const styles= StyleSheet.create({
         padding:20,
         marginTop:20
       },
-      header:{
-        fontSize: 20,
-        color: colors.font.darkText,
-        fontWeight:'600',
-        textAlign:'center'
-      },
-      markStyle:{
-        height:40,
-        width:40,
-        alignSelf:'center',
-        marginTop:60
-      },
-      contentText:{
-        fontSize: 16,
-        
-        marginTop:10,
-        textAlign: 'auto'
-      },
-      questStyle:{
-        height:30,
-        width:30,
-        margin:20,
-        alignSelf:'flex-end'
-      },
       buttonStyle:{
-        backgroundColor:'#01394a',
-        borderRadius:50,
-        width:300,
-        height:60,
-        alignSelf:'center',
-        margin:30,
-        marginTop:60
-       },
+        backgroundColor:'#e6c405',
+            borderRadius:50,
+            width:200,
+            height:60,
+            alignSelf:'flex-end',
+          marginLeft:30
+    },
       btnContainer:{
-        marginTop:20
+        flexDirection:'row',
+        marginTop:20,
+        marginLeft:30
       },
       btnStyle:{
         backgroundColor:'#e85f5f',
@@ -123,9 +91,47 @@ const styles= StyleSheet.create({
         alignSelf:'center',
         margin:30,
               },
+              cancelBtn:{
+                color: color.font.lightText,
+                fontSize: 20,
+                marginTop:15
+            
+            },
               pwdText:{
 color:'#e6c405',marginLeft:10,
 marginTop:-8
+              },
+              centeredView: {
+                flex:1,
+                justifyContent: "center",
+                alignItems: "center",
+              },
+              modalView: {
+                backgroundColor: "white",
+                borderRadius: 20,
+              padding:30,
+              margin:20
+              },
+              openButton: {
+                backgroundColor: "#F194FF",
+                borderRadius: 20,
+                padding: 10,
+                elevation: 2
+              },
+              modalText: {
+                marginBottom: 15,
+                fontSize:22,
+                color:'#01394a',
+                fontWeight:'500'
+              
+              },modalContainer:{
+                flex:3
+              },
+              modalInnerText:{
+                marginBottom: 15,
+                fontSize:16,
+                marginTop:15,
+                color:color.brownishGrey
               }
 
 }

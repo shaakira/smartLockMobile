@@ -6,23 +6,16 @@ import colors from '../../../styles/color';
 const styles= StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#01394a'
-
-  
+    backgroundColor:'white'
   },
   innerContainer:{
     flexDirection: 'row',
-    justifyContent:'space-between'
-
   },
       bottomContainer:{
         flex:5,
         backgroundColor:'white',
-        borderTopRightRadius:20,
-        borderTopLeftRadius:20,
-        paddingTop:30,
-        marginTop:20
-
+        borderTopRightRadius:10,
+        borderTopLeftRadius:10,
     },
     
     logoImage: {
@@ -37,18 +30,17 @@ const styles= StyleSheet.create({
       topText:{
         marginTop:'10%',
         fontSize:32,
-        color:'white',
+        color:'black',
         fontWeight:'500',
         marginLeft:'5%',
         justifyContent:'center',
     } ,
     
     imageStyle:{
-      width: 20,
-      height: 20, 
+      width: 15,
+      height: 15, 
       marginLeft:'20%',
-      marginTop:'65%',
-      tintColor:'white'
+      marginTop:'65%'
   },
     keyboardAwareContentContainer: {
         flex: 1,
@@ -103,30 +95,75 @@ const styles= StyleSheet.create({
         alignSelf:'flex-end'
       },
       buttonStyle:{
-        backgroundColor:'#01394a',
+        backgroundColor:'#e6c405',
         borderRadius:50,
-        width:300,
+        width:250,
         height:60,
-        alignSelf:'center',
+        alignSelf:'flex-end',
         margin:30,
         marginTop:60
        },
       btnContainer:{
-        marginTop:20
+       flexDirection:'row',
+        marginTop:20,
+        marginLeft:30
       },
-      btnStyle:{
-        backgroundColor:'#e85f5f',
-        marginTop:50,
-        borderRadius:8,
-        width:200,
-        height:50,
-        alignSelf:'center',
-        margin:30,
-              },
               pwdText:{
 color:'#e6c405',marginLeft:10,
 marginTop:-8
-              }
+              },textContainerStyle:{
+                backgroundColor:'transparent',
+            borderBottomColor:colors.font.lightText,
+            borderBottomWidth:1,
+            marginRight:10
+      
+            },
+            centeredView: {
+              flex:1,
+              justifyContent: "center",
+              alignItems: "center",
+            },
+            modalView: {
+              backgroundColor: "white",
+              borderRadius: 20,
+            padding:30,
+            margin:20
+            },
+            openButton: {
+              backgroundColor: "#F194FF",
+              borderRadius: 20,
+              padding: 10,
+              elevation: 2
+            },
+            modalText: {
+              marginBottom: 15,
+              fontSize:22,
+              color:'#01394a',
+              fontWeight:'500'
+            
+            },modalContainer:{
+              flex:3
+            },
+            modalInnerText:{
+              marginBottom: 15,
+              fontSize:16,
+              marginTop:15,
+              color:color.brownishGrey
+            },
+            cancelBtn:{
+              color: color.font.lightText,
+              fontSize: 20,
+              marginTop:15
+          
+          },
+          modalButtonStyle:{
+            backgroundColor:'#e6c405',
+                borderRadius:50,
+                width:200,
+                height:60,
+                alignSelf:'flex-end',
+              marginLeft:30
+        },
 
 }
 )

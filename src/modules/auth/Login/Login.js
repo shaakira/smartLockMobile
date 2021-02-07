@@ -4,9 +4,7 @@ import arrow from "../../../../assets/back.png";
 import {
   Text,
   View,
-  StatusBar,
   Image,
-  Animated,
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
@@ -25,7 +23,7 @@ class Login extends React.Component {
     email: "",
     password: "",
     isError: false,
-    isDanger:false
+    isDanger: false,
   };
   pressHandleRegister = () => {
     this.navigation.navigate("Register");
@@ -33,24 +31,24 @@ class Login extends React.Component {
 
   onSubmit = async () => {
     const user = { email: this.state.email, password: this.state.password };
+    let url=Expo.Constants.manifest.extra.myApiKey;
     if (this.state.password.length < 6) {
-      this.setState({isError:true})
-
+      this.setState({ isError: true });
     } else {
       await axios
-        .post("http://172.20.10.2:5000/user/login", user)
+
+        .post(`${url}/user/login`, user)
         .then((response) => {
           if (response.status === 200) {
-            this.setState({isDanger:false})
+            this.setState({ isDanger: false });
             this.toast.show("Successfully Logged in", 2000);
-          
             this.navigation.navigate("Home");
-          }
-          else if (response.status === 401){
-            this.setState({isDanger:true})
+            localStorage.setItem("user",JSON.stringify(response.data))
+         
+          } else if (response.status === 401) {
+            this.setState({ isDanger: true });
 
-            this.toast.show('error', 2000);
-
+            this.toast.show("error", 2000);
           }
         });
     }
@@ -88,7 +86,9 @@ class Login extends React.Component {
               <TextField
                 secureTextEntry
                 value={this.state.password}
-                onChangeText={(value) => this.setState({ password: value,isError:false })}
+                onChangeText={(value) =>
+                  this.setState({ password: value, isError: false })
+                }
                 errorMessage={
                   this.state.isError === true ? "Minimum 6 characters" : ""
                 }
@@ -108,7 +108,8 @@ class Login extends React.Component {
             <Toast
               ref={(toast) => (this.toast = toast)}
               style={{
-                backgroundColor: this.state.isDanger===false?"green":'red',
+                backgroundColor:
+                  this.state.isDanger === false ? "green" : "red",
                 borderRadius: 50,
                 marginBottom: 100,
               }}

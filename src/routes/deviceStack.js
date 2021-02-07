@@ -1,5 +1,6 @@
 import {createStackNavigator} from 'react-navigation-stack';
 import AddDevice from '../modules/device/AddDevice/AddDevice';
+import ViewDevice from '../modules/device/ViewDevice/ViewDevice';
 
 const screen={
 AddDevice:{
@@ -8,6 +9,12 @@ AddDevice:{
         headerShown:false
     }
 },
+ViewDevice:{
+    screen:ViewDevice,
+    navigationOptions:{
+        headerShown:false
+    }
+}
 
 
 }

@@ -106,15 +106,7 @@ const styles= StyleSheet.create({
        btnContainer:{
         marginTop:200
       },
-      btnStyle:{
-        backgroundColor:'#e85f5f',
-        marginTop:50,
-        borderRadius:8,
-        width:200,
-        height:50,
-        alignSelf:'center',
-        margin:30,
-              },
+    
               pwdText:{
 color:'#e6c405',marginLeft:10,
 marginTop:-8

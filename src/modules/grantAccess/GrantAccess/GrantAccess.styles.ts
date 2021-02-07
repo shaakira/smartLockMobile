@@ -6,23 +6,16 @@ import colors from '../../../styles/color';
 const styles= StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#01394a'
-
-  
+    backgroundColor:'white'
   },
   innerContainer:{
     flexDirection: 'row',
-    justifyContent:'space-between'
-
   },
       bottomContainer:{
         flex:5,
         backgroundColor:'white',
-        borderTopRightRadius:20,
-        borderTopLeftRadius:20,
-        paddingTop:30,
-        marginTop:20
-
+        borderTopRightRadius:10,
+        borderTopLeftRadius:10,
     },
     
     logoImage: {
@@ -37,18 +30,17 @@ const styles= StyleSheet.create({
       topText:{
         marginTop:'10%',
         fontSize:32,
-        color:'white',
+        color:'black',
         fontWeight:'500',
         marginLeft:'5%',
         justifyContent:'center',
     } ,
     
     imageStyle:{
-      width: 20,
-      height: 20, 
+      width: 15,
+      height: 15, 
       marginLeft:'20%',
-      marginTop:'65%',
-      tintColor:'white'
+      marginTop:'65%'
   },
     keyboardAwareContentContainer: {
         flex: 1,
@@ -105,9 +97,9 @@ const styles= StyleSheet.create({
       buttonStyle:{
         backgroundColor:'#01394a',
         borderRadius:50,
-        width:300,
+        width:200,
         height:60,
-        alignSelf:'center',
+        alignSelf:'flex-end',
         margin:30,
         marginTop:60
        },
@@ -126,7 +118,19 @@ const styles= StyleSheet.create({
               pwdText:{
 color:'#e6c405',marginLeft:10,
 marginTop:-8
-              }
+              },
+              pickerStyle:{
+                backgroundColor:'red',
+                color:'red'
+              },
+              textContainerStyle:{
+                backgroundColor:'transparent',
+            borderBottomColor:colors.font.lightText,
+            borderBottomWidth:1,
+            marginRight:10
+      
+            },
+            
 
 }
 )

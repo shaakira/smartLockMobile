@@ -17,42 +17,43 @@ import styles from "./Profile.style";
 import TextField from "../../../components/TextField/TextField";
 import { Button } from "react-native-elements";
 import BottomModal from "../../../components/BottomModal/BottomModal";
+import {NavigationEvents} from 'react-navigation';
 
 class Profile extends React.Component {
   state = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
+    user: { firstName: "", lastName: "", email: "", phone: "" },
     modalVisibility: false,
   };
   navigation = this.props.navigation;
 
-  handleChange = (text) => {
-    return (name) => {
-      const user = { ...this.state.user };
-      user[name] = text;
-      this.setState({ user });
-    };
-  };
-  handleSubmit = async () => {
-  
- 
-  };
+
+  async componentDidMount() {
+      let user = JSON.parse(localStorage.getItem("user"));
+      console.log(user._id)
+      this.setState({user:user})
+  }
+  handleSubmit = async () => {};
   onCloseModal = () => {
     this.setState({ modalVisibility: false });
   };
   onOpenModal = () => {
     this.setState({ modalVisibility: true });
   };
+  
   render() {
+    const user = this.state.user;
     return (
+      
       <View style={styles.container}>
+         <NavigationEvents onDidFocus={() => this.componentDidMount()} />
         <View style={styles.innerContainer}>
+       
           <TouchableOpacity onPress={() => this.navigation.openDrawer()}>
             <Image source={menu} style={styles.imageStyle} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>this.navigation.navigate("EditProfile")} >
+          <TouchableOpacity
+            onPress={() => this.navigation.navigate("EditProfile", user)}
+          >
             <Image source={edit} style={styles.editStyle} />
           </TouchableOpacity>
         </View>
@@ -65,63 +66,33 @@ class Profile extends React.Component {
             style={styles.keyboardAwareContentContainer}
             showsVerticalScrollIndicator={false}
           >
-            <View style={{marginTop:30}}>
-            <View style={styles.textInput}>
-              <Text style={styles.text}>FIRST NAME</Text>
-              <TextField
-                value={this.state.firstName}
-                name="firstName"
-                editable={false}
-              />
+            <View style={{ marginTop: 30 }}>
+              <View style={styles.textInput}>
+                <Text style={styles.text}>FIRST NAME</Text>
+                <TextField value={this.state.user.firstName} editable={false} />
+              </View>
+
+              <View style={styles.textInput}>
+                <Text style={styles.text}>LAST NAME</Text>
+                <TextField value={this.state.user.lastName} editable={false} />
+              </View>
+
+              <View style={styles.textInput}>
+                <Text style={styles.text}>EMAIL</Text>
+                <TextField value={this.state.user.email} editable={false} />
+              </View>
+              <View style={styles.textInput}>
+                <Text style={styles.text}>MOBILE NUMBER</Text>
+                <TextField value={this.state.user.phone} editable={false} />
+              </View>
             </View>
 
-            <View style={styles.textInput}>
-              <Text style={styles.text}>LAST NAME</Text>
-              <TextField
-                value={this.state.lastName}
-                name="lastName"
-                editable={false}
-              
-              />
-            </View>
-
-            <View style={styles.textInput}>
-              <Text style={styles.text}>EMAIL</Text>
-              <TextField
-                value={this.state.email}
-                name="email"
-                editable={false}
-
-              />
-            </View>
-            <View style={styles.textInput}>
-              <Text style={styles.text}>MOBILE NUMBER</Text>
-              <TextField
-                value={this.state.email}
-                name="phone"
-                editable={false}
-
-              />
-            </View>
-            </View>
-            
-            
-            <Button
-            icon={{
-              name: "lock",
-              size: 20,
-              color: "white"
-            }}
-              title="CHANGE PASSWORD"
-              buttonStyle={styles.buttonStyle}
-              iconRight
-            />
-             <View style={styles.btnContainer}>
+            <View style={styles.btnContainer}>
               <Button
                 icon={{
                   name: "logout",
                   size: 20,
-                  color: "red"
+                  color: "#bd0606",
                 }}
                 title="LOGOUT"
                 buttonStyle={styles.btmBtn}
@@ -133,11 +104,12 @@ class Profile extends React.Component {
           </ScrollView>
         </KeyboardAvoidingView>
         <BottomModal
-         visibility={this.state.modalVisibility}
-         title="Are you sure you want to logout?"
-         primaryTitle="LOGOUT"
-         onClose={this.onCloseModal}
-         isDanger={true}/>
+          visibility={this.state.modalVisibility}
+          title="Are you sure you want to logout?"
+          primaryTitle="LOGOUT"
+          onClose={this.onCloseModal}
+          isDanger={true}
+        />
       </View>
     );
   }

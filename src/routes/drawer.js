@@ -27,6 +27,7 @@ const RootDrawerNavigator = createDrawerNavigator(
             style={{ tintColor: tintColor, width: 20, height: 20 }}
           />
         ),
+        drawerLockMode: 'locked-closed'
       },
     },
     Profile: {
@@ -39,6 +40,7 @@ const RootDrawerNavigator = createDrawerNavigator(
             style={{ tintColor: tintColor, width: 20, height: 20 }}
           />
         ),
+        drawerLockMode: 'locked-closed'
       },
     },
     devices: {
@@ -51,6 +53,7 @@ const RootDrawerNavigator = createDrawerNavigator(
             style={{ tintColor: tintColor, width: 20, height: 20 }}
           />
         ),
+        drawerLockMode: 'locked-closed'
       },
     },
     grantAccess: {
@@ -63,6 +66,7 @@ const RootDrawerNavigator = createDrawerNavigator(
             style={{ tintColor: tintColor, width: 20, height: 20 }}
           />
         ),
+        drawerLockMode: 'locked-closed'
       },
     },
     settings: {
@@ -75,6 +79,7 @@ const RootDrawerNavigator = createDrawerNavigator(
               style={{ tintColor: tintColor, width: 20, height: 20 }}
             />
           ),
+          drawerLockMode: 'locked-closed'
         },
       },
   },

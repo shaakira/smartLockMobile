@@ -4,9 +4,7 @@ import arrow from "../../../../assets/back.png";
 import {
   Text,
   View,
-  StatusBar,
   Image,
-  Animated,
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
@@ -16,27 +14,43 @@ import styles from "./EditProfile.styles";
 import TextField from "../../../components/TextField/TextField";
 import { Button } from "react-native-elements";
 import BottomModal from "../../../components/BottomModal/BottomModal";
+import Toast from "react-native-easy-toast";
 
 class EditProfile extends React.Component {
-  state = {
-    firstName: "",
-    lastName: "",
-    modalVisibility: false,
-  };
   navigation = this.props.navigation;
-
-  handleChange = (text) => {
-    return (name) => {
-      const user = { ...this.state.user };
-      user[name] = text;
-      this.setState({ user });
-    };
+  firstName = this.navigation.getParam("firstName");
+  lastName = this.navigation.getParam("lastName");
+  state = {
+    firstName: this.firstName,
+    lastName: this.lastName,
+    modalVisibility: false,
+    isDanger: false,
   };
+
   handleSubmit = async () => {
-    const user = {
+    let user = JSON.parse(localStorage.getItem("user"));
+    const newUser = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
     };
+    let url=Expo.Constants.manifest.extra.myApiKey;
+
+    await axios
+      .post(`${url}/user/updateProfile/${user._id}`, newUser, {
+        headers: { Authorization: "Bearer " + user.token },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          localStorage.setItem("user", JSON.stringify(res.data));
+          this.setState({
+            modalVisibility: false,
+          });
+
+          this.navigation.navigate("Profile");
+        }
+      })
+      .catch((error) => {
+      });
   };
   onCloseModal = () => {
     this.setState({ modalVisibility: false });
@@ -45,6 +59,11 @@ class EditProfile extends React.Component {
     this.setState({ modalVisibility: true });
   };
   render() {
+    const disabled =
+      this.state.firstName === "" ||
+      this.state.lastName === "" ||
+      (this.state.firstName === this.firstName &&
+        this.state.lastName == this.lastName);
     return (
       <View style={styles.container}>
         <View style={styles.innerContainer}>
@@ -80,8 +99,8 @@ class EditProfile extends React.Component {
                 />
               </View>
             </View>
-            <TouchableOpacity onPress={this.onOpenModal}> 
-              <Text style={{ marginLeft: 30, color: "red", marginTop: 10 }}>
+            <TouchableOpacity onPress={this.onOpenModal}>
+              <Text style={{ marginLeft: 30, color: "#bd0606", marginTop: 10 }}>
                 DELETE ACCOUNT
               </Text>
             </TouchableOpacity>
@@ -89,24 +108,20 @@ class EditProfile extends React.Component {
             <View
               style={{
                 flexDirection: "row",
-                justifyContent: "space-between",
+                justifyContent: "flex-end",
                 marginTop: 30,
               }}
             >
               <Button
-                title="CANCEL"
-                buttonStyle={styles.btmBtn}
-                titleStyle={styles.btnText}
-                onPress={this.pressHandleRegister}
-              />
-              <Button
-                title="SAVE CHANGES"
+                title="SAVE"
                 buttonStyle={styles.buttonStyle}
                 onPress={this.handleSubmit}
+                disabled={disabled}
               />
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
+       
         <BottomModal
           visibility={this.state.modalVisibility}
           title="Are you sure you want to delete your account?"

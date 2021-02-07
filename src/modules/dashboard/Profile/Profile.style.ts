@@ -107,7 +107,7 @@ const styles= StyleSheet.create({
         marginTop:60
        },
       btnContainer:{
-        marginTop:20
+        marginTop:80
       },
   
               pwdText:{
@@ -119,13 +119,13 @@ marginTop:-8
                 width:300,
                 height:60,
                 alignSelf:'center',
-                borderColor:'red',
+                borderColor:'#bd0606',
                 borderWidth:1,
                 backgroundColor:'white'
                 
               },
               btnText:{
-                color: 'red',
+                color: '#bd0606',
               },
               editStyle:{
                 width: 22,
